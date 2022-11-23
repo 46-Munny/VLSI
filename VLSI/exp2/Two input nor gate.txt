@@ -1,0 +1,21 @@
+// DSCH 2.7f
+// 07-Sep-21 12:40:23 AM
+// C:\Users\Asus\Desktop\VLSI LAB FOR PRACT\Two input nor gate.sch
+
+module Two input nor gate( in2,in1,out2);
+ input in2,in1;
+ output out2;
+ pmos #(10) pmos(w2,vdd,in1); // 2.0u 0.12u
+ pmos #(24) pmos(out2,w2,in2); // 2.0u 0.12u
+ nmos #(24) nmos(out2,vss,in1); // 1.0u 0.12u
+ nmos #(24) nmos(out2,vss,in2); // 1.0u 0.12u
+endmodule
+
+// Simulation parameters in Verilog Format
+always
+#1000 in2=~in2;
+#2000 in1=~in1;
+
+// Simulation parameters
+// in2 CLK 10 10
+// in1 CLK 20 20
